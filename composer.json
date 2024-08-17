@@ -1,0 +1,87 @@
+{
+    "type": "project",
+    "name": "juliusstoerrle/data-document-backup-worker",
+    "description": "Wrapper around data-document-backup library to consume via Symfony Messenger",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.2",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "juliusstoerrle/data-document-backup-core": "@dev",
+        "open-telemetry/exporter-otlp": "^1.0",
+        "open-telemetry/opentelemetry-auto-ext-amqp": "^0.0.4",
+        "open-telemetry/opentelemetry-auto-io": "^0.0.12",
+        "open-telemetry/opentelemetry-auto-symfony": "1.0.0beta27",
+        "open-telemetry/sdk": "*",
+        "phpoffice/phpword": "^1.2",
+        "symfony/amqp-messenger": "7.1.*",
+        "symfony/console": "7.1.*",
+        "symfony/dotenv": "7.1.*",
+        "symfony/flex": "^2",
+        "symfony/framework-bundle": "7.1.*",
+        "symfony/messenger": "7.1.*",
+        "symfony/runtime": "7.1.*",
+        "symfony/yaml": "7.1.*"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": false,
+            "symfony/flex": true,
+            "symfony/runtime": true
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*",
+        "symfony/polyfill-php82": "*"
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd"
+        },
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ]
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "7.1.*"
+        }
+    },
+    "repositories": [{
+        "type": "path",
+        "url": "../core"
+    },{
+        "type": "path",
+        "url": "../contract"
+    }],
+    "require-dev": {
+        "mpdf/mpdf": "^8.2",
+        "open-telemetry/transport-grpc": "^1.0"
+    }
+}
